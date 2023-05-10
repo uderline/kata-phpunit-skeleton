@@ -21,5 +21,13 @@ class MarsRover
         if ($commands === 'R') {
             $this->direction = 'E';
         }
+
+        if ($commands === 'RR') {
+            $this->direction = 'S';
+        }
+
+        if ($commands === 'RRR') {
+            $this->direction = 'W';
+        }
     }
 }

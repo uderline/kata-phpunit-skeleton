@@ -3,6 +3,7 @@
 namespace GQ\Kata\Tests;
 
 use GQ\Kata\MarsRover;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -33,13 +34,26 @@ final class MarsRoverTest extends TestCase
         $this->assertEquals("0:1:N", $marsRover->position());
     }
 
-    #[Test]
-    public function should_turn_right(): void
+    #[
+        Test,
+        DataProvider('should_turn_right_provider')
+    ]
+    public function should_turn_right(string $commands, string $direction): void
     {
         $marsRover = new MarsRover();
-        $marsRover->execute('R');
+        $marsRover->execute($commands);
 
-        $this->assertEquals("0:0:E", $marsRover->position());
+        $this->assertEquals("0:0:$direction", $marsRover->position());
+    }
+
+    public static function should_turn_right_provider(): array
+    {
+        return [
+            'R' => ['R', 'E'],
+            'RR' => ['RR', 'S'],
+            'RRR' => ['RRR', 'W'],
+//            'RRRR' => ['RRRR', 'N'],
+        ];
     }
 
     // TODO: should stay at non initial position when executing no command
