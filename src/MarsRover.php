@@ -18,16 +18,15 @@ class MarsRover
             $this->moved = true;
         }
 
-        if ($commands === 'R') {
-            $this->direction = 'E';
-        }
-
-        if ($commands === 'RR') {
-            $this->direction = 'S';
-        }
-
-        if ($commands === 'RRR') {
-            $this->direction = 'W';
+        foreach (str_split($commands) as $command) {
+            if ($command === 'R') {
+                $this->direction = match ($this->direction) {
+                    'N' => 'E',
+                    'E' => 'S',
+                    'S' => 'W',
+                    'W' => 'N',
+                };
+            }
         }
     }
 }

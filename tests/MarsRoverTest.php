@@ -52,7 +52,7 @@ final class MarsRoverTest extends TestCase
             'R' => ['R', 'E'],
             'RR' => ['RR', 'S'],
             'RRR' => ['RRR', 'W'],
-//            'RRRR' => ['RRRR', 'N'],
+            'RRRR' => ['RRRR', 'N'],
         ];
     }
 
