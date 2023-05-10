@@ -2,9 +2,9 @@
 
 namespace GQ\Kata\Tests;
 
+use GQ\Kata\MarsRover;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use GQ\Kata\MarsRover;
 
 final class MarsRoverTest extends TestCase
 {
@@ -33,5 +33,17 @@ final class MarsRoverTest extends TestCase
         $this->assertEquals("0:1:N", $marsRover->position());
     }
 
+    #[Test]
+    public function should_turn_right(): void
+    {
+        $marsRover = new MarsRover();
+        $marsRover->execute('R');
+
+        $this->assertEquals("0:0:E", $marsRover->position());
+    }
+
     // TODO: should stay at non initial position when executing no command
+    // TODO: should move rover forward one square in the east direction
+    // TODO: should move rover forward one square in the west direction
+    // TODO: should move rover forward one square in the south direction
 }
