@@ -36,9 +36,9 @@ final class MarsRoverTest extends TestCase
 
     #[
         Test,
-        DataProvider('should_turn_right_provider')
+        DataProvider('should_turn_provider')
     ]
-    public function should_turn_right(string $commands, string $direction): void
+    public function should_turn(string $commands, string $direction): void
     {
         $marsRover = new MarsRover();
         $marsRover->execute($commands);
@@ -46,13 +46,14 @@ final class MarsRoverTest extends TestCase
         $this->assertEquals("0:0:$direction", $marsRover->position());
     }
 
-    public static function should_turn_right_provider(): array
+    public static function should_turn_provider(): array
     {
         return [
             'R' => ['R', 'E'],
             'RR' => ['RR', 'S'],
             'RRR' => ['RRR', 'W'],
             'RRRR' => ['RRRR', 'N'],
+            'L' => ['L', 'W'],
         ];
     }
 
@@ -60,4 +61,7 @@ final class MarsRoverTest extends TestCase
     // TODO: should move rover forward one square in the east direction
     // TODO: should move rover forward one square in the west direction
     // TODO: should move rover forward one square in the south direction
+    // TODO: should turn left twice
+    // TODO: should turn left thrice
+    // TODO: should turn left foice
 }

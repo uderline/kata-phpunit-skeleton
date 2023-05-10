@@ -27,6 +27,10 @@ class MarsRover
                     'W' => 'N',
                 };
             }
+
+            if ($command === 'L') {
+                $this->direction = 'W';
+            }
         }
     }
 }
